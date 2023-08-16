@@ -1,0 +1,48 @@
+/* There are basically two types of animation in CSS
+    First one is by using the Transition Property and then change the property we want to
+    animate on an event like when we hover over the element
+    
+    Second one is by using key frames which is more complex but it is cooler
+    
+    @keyframes _animation_name_*/
+
+    @keyframes moveInLeft{
+        /* Start is from 0% and end is from 100% */
+        /* Browsers are optmized for 2 properties: opacity and transform */
+        0%{
+            opacity: 0;
+            /* -100px means that it will move from right to left, and vice versa */
+            transform: translateX(-100px);
+        }
+        80%{
+            transform: translateX(20px);
+        }
+        100%{
+            opacity: 1;
+            /* translate(0) means it will look how it currently looks */
+            transform: translate(0);
+        }
+    }
+    @keyframes moveInRight{
+        0%{
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        80%{
+            transform: translateX(-20px);
+        }
+        100%{
+            opacity: 1;
+            transform: translate(0);
+        }
+    }
+    @keyframes moveInBottom{
+        0%{
+            opacity: 0;
+            transform: translateY(100px);
+        }
+        100%{
+            opacity: 1;
+            transform: translate(0);
+        }
+    }
