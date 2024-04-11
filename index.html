@@ -12,6 +12,8 @@
 
         <link rel="stylesheet" href="css/style.css">
         <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
         
         <title>Natours | Exciting tours for adventurous people</title>
     </head>
@@ -364,11 +366,11 @@
             </section>
 
 
-            <section class="section-book">
+            <section class="section-book" ng-controller="formController" ng-app="app">
                 <div class="row">
                     <div class="book">
                         <div class="book__form">
-                            <form action="#" class="form">
+                            <form action="/" class="form" method="post" name="studentForm">
                                 <div class="u-center-text u-margin-bottom-medium">
                                     <h2 class="heading-secondary">
                                         Start booking now
@@ -376,19 +378,22 @@
                                 </div>
 
                                 <div class="form__group">
-                                    <input type="text" class="form__input" placeholder="Full Name" id="name" required>
+                                    <input type="text" class="form__input" placeholder="Full Name" id="name" name="fullName" ng-model="student_name" ng-pattern="/^[a-zA-Z\s]*$/" required>
                                     <label for="name" class="form__label">Full name</label>
+                                    <div ng-show="studentForm.student_name.$touched && studentForm.student_name.$error.pattern">
+                                        <span class="error">Name should not have any numbers or special characters</span>
+                                    </div>
                                 </div>
 
 
                                 <div class="form__group">
-                                    <input type="email" class="form__input" placeholder="Email address" id="email" required>
+                                    <input type="email" class="form__input" placeholder="Email address" id="email" name="fullEmail" required>
                                     <label for="email" class="form__label">Email address</label>
                                 </div>
 
                                 <div class="form__group u-margin-bottom-medium">
                                     <div class="form__radio-group">
-                                        <input type="radio" class="form__radio-input" id="small" name="size">
+                                        <input type="radio" class="form__radio-input" id="small" name="size" value="smallTour">
                                         <label for="small" class="form__radio-label">
                                             <span class="form__radio-button"></span>    
                                             Small tour group
@@ -397,7 +402,7 @@
                                     
                                     
                                     <div class="form__radio-group">
-                                        <input type="radio" class="form__radio-input" id="large" name="size">
+                                        <input type="radio" class="form__radio-input" id="large" name="size" value="largeTour">
                                         <label for="large" class="form__radio-label">
                                             <span class="form__radio-button"></span>    
                                             Large tour group
@@ -407,13 +412,19 @@
                                 </div>
 
                                 <div class="form__group">
-                                    <button class="btn btn--green">Next step &rarr;</button>
+                                    <button class="btn btn--green" ng-disabled="studentForm.$invalid">Submit &rarr;</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </section>
+            <script>
+                var app = angular.module('app', []);
+                app.controller('formController', function($scope) {
+                  // controller code here
+                });
+              </script>
         </main>
 
 
@@ -443,7 +454,7 @@
                 </div>
                 <div class="col-1-of-2">
                     <p class="footer__copyright">
-                        Built by <a href="#"  class="footer__link" target="_blank">Gautam Kundalia</a>
+                        Built by <a href="#"  class="footer__link" target="_blank">Gautam Kundalia & Siddharth Maru</a>
                     </p>
                 </div>
             </div>
@@ -539,6 +550,7 @@
                 </div>
             </div>
         </section> -->
+        
 
     </body>
 </html>
